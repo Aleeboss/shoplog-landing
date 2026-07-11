@@ -354,9 +354,36 @@
                 </div>
                 <span class="text-lg font-bold text-slate-900 tracking-tight">ShopLog</span>
             </div>
+            <div class="flex gap-6 text-sm font-medium text-slate-600">
+                <a href="privacy-policy.html" class="hover:text-teal-600 transition-colors">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-teal-600 transition-colors">Terms of Service</a>
+            </div>
             <p class="text-sm text-slate-500 font-medium">© 2026 ShopLog. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-slate-900 text-white p-4 flex flex-col sm:flex-row items-center justify-between gap-4 z-50 transition-transform duration-300 translate-y-full">
+        <p class="text-sm">We use cookies to improve your experience and for analytics. By continuing to use this site, you agree to our <a href="privacy-policy.html" class="underline text-teal-400">Privacy Policy</a>.</p>
+        <div class="flex gap-2">
+            <button onclick="acceptCookies()" class="bg-teal-600 hover:bg-teal-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Accept</button>
+            <button onclick="acceptCookies()" class="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Decline</button>
+        </div>
+    </div>
+
+    <script>
+        function acceptCookies() {
+            localStorage.setItem('cookie-consent', 'true');
+            document.getElementById('cookie-banner').classList.add('translate-y-full');
+        }
+        
+        window.addEventListener('load', () => {
+            if (!localStorage.getItem('cookie-consent')) {
+                setTimeout(() => {
+                    document.getElementById('cookie-banner').classList.remove('translate-y-full');
+                }, 1000);
+            }
+        });
+    </script>
 </body>
 </html>
